@@ -1,0 +1,183 @@
+---
+import { navLinks, ctaLink } from '@/data/navigation';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-scrolled="false">
+  <div class="absolute inset-0 bg-white/95 backdrop-blur-sm border-b border-white/10 transition-all duration-300"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="h-12 flex items-center justify-center flex-shrink-0">
+          <img src="/logoAsoProAruzi.svg" alt="Asoproaruzi Logo" class="h-full w-auto" />
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'px-4 py-2 rounded-lg text-sm font-medium tracking-wide transition-all',
+                isActive
+                  ? 'text-brand-green bg-brand-green/10 rounded-md'
+                  : 'text-brand-green hover:text-brand-green/80 hover:bg-brand-green/10',
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+        <a
+          href={ctaLink.href}
+          class="ml-4 px-5 py-2.5 bg-brand-green text-white border border-white/20 font-semibold text-sm rounded-lg hover:bg-white hover:text-brand-green hover:shadow-lg transition-all"
+        >
+          {ctaLink.label}
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition-colors"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="hamburger-line block w-4 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 lg:hidden"
+  style="display: none;"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  <!-- Overlay -->
+  <div id="menu-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  
+  <!-- Panel -->
+  <div class="absolute right-0 top-0 bottom-0 w-80 bg-brand-dark shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" id="menu-panel">
+    
+    <!-- Header del panel -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-white/10">
+      <div class="h-8">
+        <img src="/logoAsoProAruzi.svg" alt="Asoproaruzi Logo" class="h-full w-auto" />
+      </div>
+      <button id="menu-close" class="p-2 text-white/60 hover:text-white transition-colors" aria-label="Cerrar menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Nav links -->
+    <nav class="flex flex-col gap-1 px-4 py-6" aria-label="Navegación móvil">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class:list={[
+              'px-4 py-3 rounded-xl text-base font-medium transition-all',
+              isActive
+                ? 'text-brand-green bg-white'
+                : 'text-white/80 hover:text-white hover:bg-white/10',
+            ]}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+      
+      <div class="mt-4 pt-4 border-t border-white/10">
+        <a
+          href={ctaLink.href}
+          class="block text-center px-5 py-3 bg-brand-green border border-white/20 text-white font-semibold rounded-xl hover:bg-white hover:text-brand-green transition-all"
+        >
+          {ctaLink.label}
+        </a>
+      </div>
+    </nav>
+    
+    <!-- Footer del panel -->
+    <div class="mt-auto px-6 py-6 border-t border-white/10">
+      <p class="text-white/40 text-xs text-center">© 2025 Asoproaruzi. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const header = document.getElementById('main-header');
+  const toggle = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuPanel = document.getElementById('menu-panel');
+  const overlay = document.getElementById('menu-overlay');
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+
+  function openMenu() {
+    mobileMenu!.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      menuPanel?.classList.remove('translate-x-full');
+    }, 10);
+    toggle?.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    menuPanel?.classList.add('translate-x-full');
+    document.body.style.overflow = '';
+    toggle?.setAttribute('aria-expanded', 'false');
+    setTimeout(() => {
+      mobileMenu!.style.display = 'none';
+    }, 300);
+  }
+
+  toggle?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
+  // Close on nav link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+</script>
+
+<style>
+  #main-header.scrolled > div:first-child {
+    @apply shadow-lg shadow-black/30;
+  }
+  
+  #main-header.scrolled {
+    @apply shadow-xl;
+  }
+</style>

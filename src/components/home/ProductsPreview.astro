@@ -1,0 +1,106 @@
+﻿---
+import CTAButton from '@/components/common/CTAButton.astro';
+
+const categories = [
+  {
+    icon: '🍌',
+    label: 'Productos Perecibles',
+    description: 'Plátano, Banana, Piña, Malanga, Aguacate, Jengibre, Cacao y más frutas tropicales de primera calidad.',
+    items: ['Plátano', 'Banana', 'Piña', 'Malanga', 'Aguacate', 'Cacao'],
+    href: '/productos#perecibles',
+    color: 'border-brand-green',
+    badgeBg: 'bg-brand-green',
+    tag: '15 productos',
+  },
+  {
+    icon: '🍿',
+    label: 'Chips & Snacks',
+    description: 'Línea de snacks: plátano, yuca, malanga y camote en múltiples presentaciones y sabores.',
+    items: ['Plátano Natural', 'Plátano Picante', 'Yuca Frita', 'Malangas', 'Camote'],
+    href: '/productos#chips',
+    color: 'border-brand-green',
+    badgeBg: 'bg-brand-green',
+    tag: '6 gramajes',
+  },
+  {
+    icon: '🇵🇪',
+    label: 'Origen Perú · Agroproa',
+    description: 'Paltas Hass, arándanos, mandarina Murcott, mango, espárragos, uvas y más productos peruanos selectos.',
+    items: ['Palta Hass', 'Arándanos', 'Mandarina', 'Mango', 'Espárragos'],
+    href: '/productos#peru',
+    color: 'border-red-600',
+    badgeBg: 'bg-red-600',
+    tag: '13 productos',
+  },
+];
+---
+
+<section class="py-20 bg-white" aria-label="Vista previa de productos">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Title -->
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Nuestros <span style="color: var(--color-green)">Productos</span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Tres líneas de producto que cubren las necesidades de importadores, distribuidores y retailers internacionales.
+      </p>
+    </div>
+
+    <!-- Product category cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {categories.map(cat => (
+        <a
+          href={cat.href}
+          class:list={[
+            'block bg-brand-cream rounded-2xl p-8 border-t-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group',
+            cat.color,
+          ]}
+        >
+          <!-- Header -->
+          <div class="flex items-start justify-between mb-6">
+            <div class="text-4xl">{cat.icon}</div>
+            <span class:list={['text-xs font-semibold text-white px-2.5 py-1 rounded-full', cat.badgeBg]}>
+              {cat.tag}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <h3 class="font-display font-bold text-xl text-brand-dark mb-3 group-hover:text-brand-green transition-colors">
+            {cat.label}
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">{cat.description}</p>
+
+          <!-- Sample items -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            {cat.items.map(item => (
+              <span class="px-2.5 py-1 bg-white text-brand-dark text-xs font-medium rounded-lg border border-gray-100">
+                {item}
+              </span>
+            ))}
+            <span class="px-2.5 py-1 bg-white text-gray-400 text-xs rounded-lg border border-gray-100">y más...</span>
+          </div>
+
+          <!-- Link -->
+          <div class="flex items-center gap-2 text-brand-green font-semibold text-sm group-hover:gap-3 transition-all">
+            Ver todos los productos
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <CTAButton href="/productos" label="Ver Catálogo Completo" variant="primary" size="lg" />
+    </div>
+  </div>
+</section>

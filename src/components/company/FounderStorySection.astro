@@ -1,0 +1,82 @@
+﻿---
+import { founder } from '@/data/company';
+---
+
+<section id="fundadora" class="py-20 bg-white scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Historia y Trayectoria
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Detrás de Asoproaruzi hay una historia de visión, emprendimiento y compromiso genuino con el agro latinoamericano.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+      
+      <!-- Profile sidebar -->
+      <div class="lg:col-span-2">
+        <!-- Photo placeholder area -->
+        <div class="bg-gradient-to-br from-brand-green to-brand-green-dark rounded-3xl aspect-square flex items-center justify-center mb-6 relative overflow-hidden">
+          <div class="text-8xl">👩‍💼</div>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-6">
+            <div class="text-white font-display font-bold text-xl">{founder.name}</div>
+            <div class="text-brand-green text-sm">{founder.title}</div>
+          </div>
+        </div>
+        
+        <!-- Achievements -->
+        <div class="bg-brand-cream rounded-2xl p-6">
+          <h3 class="font-semibold text-brand-dark text-sm uppercase tracking-wider mb-4">Logros Clave</h3>
+          <ul class="space-y-3">
+            {founder.achievements.map(achievement => (
+              <li class="flex items-start gap-3">
+                <div class="w-5 h-5 bg-brand-green/20 border border-brand-green/40 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg width="10" height="10" viewBox="0 0 20 20" fill="currentColor" class="text-brand-green">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <span class="text-gray-600 text-sm leading-relaxed">{achievement}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Story content -->
+      <div class="lg:col-span-3">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="h-px w-8 bg-brand-green"></div>
+          <span class="text-brand-green font-semibold text-sm uppercase tracking-widest">Fundadora</span>
+        </div>
+        <h3 class="font-display font-bold text-3xl text-brand-dark mb-2">{founder.name}</h3>
+        <p class="text-brand-green font-semibold mb-6">{founder.title}</p>
+        
+        <p class="text-gray-600 text-lg leading-relaxed mb-8 font-display italic">
+          "{founder.shortBio}"
+        </p>
+
+        <div class="prose prose-gray max-w-none">
+          {founder.story.split('\n\n').map(para => (
+            <p class="text-gray-600 leading-relaxed mb-5">{para}</p>
+          ))}
+        </div>
+
+        <!-- Quote highlight -->
+        <div class="mt-8 bg-brand-green/5 border-l-4 border-brand-green rounded-r-xl p-6">
+          <p class="font-display italic text-brand-dark text-xl">
+            "Hacemos lo complicado, fácil. Para nuestros clientes, para nuestros agricultores y para el mundo."
+          </p>
+          <p class="text-brand-green font-semibold text-sm mt-3">— {founder.name}, Fundadora de Asoproaruzi</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

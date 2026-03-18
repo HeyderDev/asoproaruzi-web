@@ -1,0 +1,97 @@
+﻿---
+import { productBenefits } from '@/data/products';
+---
+
+<section class="py-20 bg-brand-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        ¿Por qué Elegir Asoproaruzi?
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        La diferencia está en los detalles: trazabilidad, frescura y compromiso con la calidad en cada envío.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7 mb-12">
+      {productBenefits.map(benefit => (
+        <div class="bg-white rounded-2xl p-7 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="text-4xl mb-5">{benefit.icon}</div>
+          <h3 class="font-display font-bold text-xl text-brand-dark mb-3">{benefit.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{benefit.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Differentiators strip -->
+    <div class="bg-brand-dark rounded-2xl p-7">
+      <p class="text-white/50 text-xs uppercase tracking-widest text-center mb-6">Ventajas Competitivas</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        {[
+          { icon: '❄️', label: 'Cadena de Frío', desc: 'Garantizada en todo el proceso' },
+          { icon: '🔍', label: 'Trazabilidad', desc: 'Del campo al destino, completa' },
+          { icon: '📜', label: 'Certificaciones', desc: 'Fitosanitarias internacionales' },
+          { icon: '⚡', label: 'Agilidad', desc: 'Logística optimizada y rápida' },
+        ].map(d => (
+          <div class="text-center">
+            <div class="text-3xl mb-2">{d.icon}</div>
+            <div class="text-white font-semibold text-sm mb-1">{d.label}</div>
+            <div class="text-white/50 text-xs">{d.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tourism / Experience section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px w-8 bg-brand-green"></div>
+          <span class="text-brand-green font-semibold text-sm uppercase tracking-widest">Experiencia Ecuador</span>
+        </div>
+        <h2 class="font-display font-bold text-4xl text-brand-dark mb-5 leading-tight">
+          Ecuador: Tierra de Diversidad Agrícola
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          Ecuador es uno de los países con mayor biodiversidad del mundo. Sus microclimas únicos —desde la costa hasta la sierra y la Amazonía— producen frutas y vegetales de extraordinaria calidad que no se encuentran en ningún otro lugar del planeta.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          En Asoproaruzi somos embajadores de esa riqueza natural. Cada producto que exportamos lleva consigo la identidad del suelo ecuatoriano: frescura, sabor auténtico y calidad superior.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          {['Costa', 'Sierra', 'Amazonía', 'Galápagos'].map(region => (
+            <span class="px-3 py-1.5 bg-brand-green/10 text-brand-green text-sm font-medium rounded-lg">
+              🌿 {region}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        {[
+          { emoji: '🌺', title: 'Biodiversidad', desc: '17 de los 32 ecosistemas del mundo' },
+          { emoji: '⛰️', title: 'Microclimas', desc: 'Condiciones únicas para la agricultura' },
+          { emoji: '🌊', title: 'Suelos Fértiles', desc: 'Origen volcánico y aluvial' },
+          { emoji: '☀️', title: 'Todo el Año', desc: 'Producción continua sin estacionalidad' },
+        ].map(card => (
+          <div class="bg-brand-cream rounded-2xl p-6 border border-gray-100">
+            <div class="text-3xl mb-3">{card.emoji}</div>
+            <div class="font-semibold text-brand-dark text-sm mb-1">{card.title}</div>
+            <div class="text-gray-400 text-xs">{card.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

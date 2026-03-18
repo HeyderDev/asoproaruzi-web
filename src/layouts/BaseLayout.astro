@@ -1,0 +1,126 @@
+---
+import { navLinks } from '@/data/navigation';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = 'Asoproaruzi – Empresa exportadora ecuatoriana especializada en productos agrícolas perecederos y snacks. Calidad, sostenibilidad y comercio global.',
+  image = '/images/og-default.jpg',
+  canonicalUrl,
+} = Astro.props;
+
+const fullTitle = title === 'Inicio' ? 'Asoproaruzi | Exportación Agrícola de Calidad' : `${title} | Asoproaruzi`;
+const canonical = canonicalUrl ?? Astro.url.href;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_EC" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+    
+    <title>{fullTitle}</title>
+  </head>
+  <body class="bg-brand-cream font-sans text-brand-dark antialiased">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-green: #2D6A2D;
+    --color-green-light: #3D8B3D;
+    --color-green-dark: #1A4A1A;
+    --color-gold: #B8860B;
+    --color-gold-light: #D4A017;
+    --color-cream: #F9F6F0;
+    --color-dark: #1A2B1A;
+    --color-earth: #6B4C11;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-dark);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    line-height: 1.2;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-cream);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-green);
+    border-radius: 3px;
+  }
+
+  /* Focus */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-green);
+    color: white;
+  }
+
+  /* Smooth transitions */
+  a, button {
+    transition: all 0.2s ease;
+  }
+</style>

@@ -1,0 +1,105 @@
+﻿---
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+import type { ContactOffice } from '@/data/contact';
+
+interface Props {
+  office: ContactOffice;
+  featured?: boolean;
+}
+
+const { office, featured = false } = Astro.props;
+---
+
+<article class:list={[
+  'rounded-2xl overflow-hidden border transition-all duration-300 hover:shadow-xl hover:-translate-y-1',
+  featured ? 'border-brand-green/40 bg-brand-dark text-white' : 'border-gray-100 bg-white',
+]}>
+  <!-- Header -->
+  <div class:list={[
+    'p-7 border-b',
+    featured ? 'bg-gradient-to-br from-brand-green to-brand-green-dark border-white/10' : 'bg-brand-cream border-gray-100',
+  ]}>
+    <div class="flex items-start justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-4xl">{office.flagEmoji}</span>
+        <div>
+          <h3 class:list={['font-display font-bold text-xl', featured ? 'text-white' : 'text-brand-dark']}>
+            {office.company}
+          </h3>
+          <p class:list={['text-sm font-medium', featured ? 'text-white/70' : 'text-gray-500']}>
+            {office.country}
+          </p>
+        </div>
+      </div>
+      {featured && (
+        <span class="px-2.5 py-1 bg-brand-green text-white text-xs font-semibold rounded-full">
+          Sede Principal
+        </span>
+      )}
+    </div>
+  </div>
+
+  <!-- Contact details -->
+  <div class="p-7">
+    <div class="space-y-4">
+      
+      <!-- Representative -->
+      {office.representative && (
+        <div class="flex items-start gap-3">
+          <span class:list={['mt-0.5 flex-shrink-0', featured ? 'text-brand-green' : 'text-brand-green']}>👤</span>
+          <div>
+            <div class:list={['text-xs font-semibold uppercase tracking-wider mb-0.5', featured ? 'text-white/50' : 'text-gray-400']}>Representante</div>
+            <div class:list={['text-sm font-medium', featured ? 'text-white' : 'text-brand-dark']}>{office.representative}</div>
+          </div>
+        </div>
+      )}
+
+      <!-- Address -->
+      <div class="flex items-start gap-3">
+        <span class:list={['mt-0.5 flex-shrink-0', featured ? 'text-brand-green' : 'text-brand-green']}>📍</span>
+        <div>
+          <div class:list={['text-xs font-semibold uppercase tracking-wider mb-0.5', featured ? 'text-white/50' : 'text-gray-400']}>Dirección</div>
+          <div class:list={['text-sm', featured ? 'text-white/80' : 'text-gray-600']}>{office.address}</div>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="flex items-start gap-3">
+        <span class:list={['mt-0.5 flex-shrink-0', featured ? 'text-brand-green' : 'text-brand-green']}>📞</span>
+        <div>
+          <div class:list={['text-xs font-semibold uppercase tracking-wider mb-0.5', featured ? 'text-white/50' : 'text-gray-400']}>Teléfono</div>
+          <a href={`tel:${office.phone}`} class:list={['text-sm font-medium hover:underline', featured ? 'text-white' : 'text-brand-dark']}>
+            {office.phone}
+          </a>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="flex items-start gap-3">
+        <span class:list={['mt-0.5 flex-shrink-0', featured ? 'text-brand-green' : 'text-brand-green']}>✉️</span>
+        <div>
+          <div class:list={['text-xs font-semibold uppercase tracking-wider mb-0.5', featured ? 'text-white/50' : 'text-gray-400']}>Correo Electrónico</div>
+          <a href={`mailto:${office.email}`} class:list={['text-sm font-medium hover:underline break-all', featured ? 'text-brand-green' : 'text-brand-green']}>
+            {office.email}
+          </a>
+        </div>
+      </div>
+
+      <!-- Hours -->
+      {office.hours && (
+        <div class="flex items-start gap-3">
+          <span class:list={['mt-0.5 flex-shrink-0', featured ? 'text-brand-green' : 'text-brand-green']}>🕐</span>
+          <div>
+            <div class:list={['text-xs font-semibold uppercase tracking-wider mb-0.5', featured ? 'text-white/50' : 'text-gray-400']}>Horario</div>
+            <div class:list={['text-sm', featured ? 'text-white/80' : 'text-gray-600']}>{office.hours}</div>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- WhatsApp CTA -->
+    <div class="mt-6 pt-6 border-t" class:list={[featured ? 'border-white/10' : 'border-gray-100']}>
+      <WhatsAppButton phone={office.whatsapp} message={office.whatsappMessage} label={`WhatsApp ${office.country}`} />
+    </div>
+  </div>
+</article>

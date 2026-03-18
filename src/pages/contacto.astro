@@ -1,0 +1,195 @@
+﻿---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/common/PageHero.astro';
+import ContactCard from '@/components/contact/ContactCard.astro';
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+import { headquarters, extensionPeru, acmaContact } from '@/data/contact';
+---
+
+<BaseLayout
+  title="Contacto"
+  description="Contáctenos para consultas de importación, precios y alianzas comerciales. Sedes en Ecuador, Perú y EE.UU. (ACMA LLC). WhatsApp disponible."
+>
+  <PageHero
+    title="Contacto"
+    subtitle="Estamos listos para conversar sobre cómo podemos ser su aliado estratégico en la importación de productos agrícolas de calidad."
+    breadcrumb="Contacto"
+    bgColor="bg-brand-dark"
+  />
+
+  <section class="py-20 bg-brand-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section title -->
+      <div class="text-center mb-14">
+        <div class="flex items-center gap-3 justify-center mb-4">
+          <div class="h-px w-8 bg-brand-green"></div>
+          <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+          <div class="h-px w-8 bg-brand-green"></div>
+        </div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+          Nuestras Oficinas y Contactos
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+          Presencia en Ecuador, Perú y Estados Unidos para atender a clientes en cualquier parte del mundo.
+        </p>
+      </div>
+
+      <!-- Main contact cards: Ecuador HQ + Peru extension -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <ContactCard office={headquarters} featured={true} />
+        <ContactCard office={extensionPeru} featured={false} />
+      </div>
+
+      <!-- ACMA US card -->
+      <div class="max-w-xl mx-auto mb-14">
+        <ContactCard office={acmaContact} featured={false} />
+      </div>
+
+      <!-- Contact form placeholder -->
+      <div class="bg-white rounded-3xl p-10 border border-gray-100 shadow-sm">
+        <div class="text-center mb-8">
+          <div class="flex items-center gap-3 justify-center mb-4">
+            <div class="h-px w-8 bg-brand-green"></div>
+            <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+            <div class="h-px w-8 bg-brand-green"></div>
+          </div>
+          <h2 class="font-display font-bold text-2xl text-brand-dark mb-2">Envíenos un Mensaje</h2>
+          <p class="text-gray-500 text-sm">Nos comunicaremos con usted en un plazo de 24-48 horas hábiles.</p>
+        </div>
+
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-5" id="contact-form" novalidate>
+          <div>
+            <label for="nombre" class="block text-sm font-semibold text-brand-dark mb-1.5">Nombre completo *</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              placeholder="Su nombre"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="empresa" class="block text-sm font-semibold text-brand-dark mb-1.5">Empresa</label>
+            <input
+              type="text"
+              id="empresa"
+              name="empresa"
+              placeholder="Nombre de su empresa"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-semibold text-brand-dark mb-1.5">Correo electrónico *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="su@empresa.com"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="telefono" class="block text-sm font-semibold text-brand-dark mb-1.5">Teléfono</label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="+1 (555) 000-0000"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <label for="pais" class="block text-sm font-semibold text-brand-dark mb-1.5">País</label>
+            <select
+              id="pais"
+              name="pais"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm text-gray-600 bg-white transition-all"
+            >
+              <option value="">Seleccione su país</option>
+              <option>Ecuador</option>
+              <option>Perú</option>
+              <option>Estados Unidos</option>
+              <option>Chile</option>
+              <option>Colombia</option>
+              <option>México</option>
+              <option>España</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="interes" class="block text-sm font-semibold text-brand-dark mb-1.5">Interés principal</label>
+            <select
+              id="interes"
+              name="interes"
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm text-gray-600 bg-white transition-all"
+            >
+              <option value="">¿Qué le interesa?</option>
+              <option>Importar Perecederos</option>
+              <option>Importar Chips / Snacks</option>
+              <option>Productos de Origen Perú</option>
+              <option>Alianza Comercial</option>
+              <option>Información General</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="mensaje" class="block text-sm font-semibold text-brand-dark mb-1.5">Mensaje *</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows={5}
+              required
+              placeholder="Describa su consulta: productos de interés, volúmenes, mercado destino, etc."
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 text-sm resize-none transition-all"
+            ></textarea>
+          </div>
+
+          <div class="md:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-400 text-xs">* Campos obligatorios. Sus datos son confidenciales y no serán compartidos.</p>
+            <button
+              type="submit"
+              class="px-8 py-3.5 bg-brand-green text-white font-semibold rounded-xl hover:bg-brand-green-light hover:shadow-lg hover:shadow-brand-green/30 transition-all flex items-center gap-2 group"
+            >
+              Enviar Mensaje
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11h2v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="py-12 bg-brand-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { icon: '🏢', title: 'Empresa Constituida', desc: 'Legalmente habilitada en Ecuador' },
+          { icon: '🇺🇸', title: 'ACMA LLC', desc: 'Entidad legal en EE.UU.' },
+          { icon: '🌿', title: 'Agrocalidad', desc: 'Certificación fitosanitaria' },
+          { icon: '⏱️', title: 'Respuesta Rápida', desc: 'Menos de 24h hábiles' },
+        ].map(item => (
+          <div>
+            <div class="text-3xl mb-2">{item.icon}</div>
+            <div class="font-semibold text-white text-sm mb-1">{item.title}</div>
+            <div class="text-white/40 text-xs">{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <WhatsAppButton phone="+593XXXXXXXXX" message="Hola, quiero información para importar sus productos." floatingButton={true} />
+</BaseLayout>

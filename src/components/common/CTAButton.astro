@@ -1,0 +1,55 @@
+﻿---
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'outline' | 'gold';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  target?: string;
+  rel?: string;
+  id?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'primary',
+  size = 'md',
+  class: extraClass = '',
+  target,
+  rel,
+  id,
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const variantClasses = {
+  primary: 'bg-brand-green text-white hover:bg-brand-green-light shadow-lg hover:shadow-green-800/30',
+  secondary: 'bg-brand-dark text-white hover:bg-brand-dark/80 shadow-lg',
+  outline: 'border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white',
+  gold: 'bg-brand-green text-white hover:bg-brand-green-light shadow-lg hover:shadow-yellow-800/30',
+};
+---
+
+<a
+  href={href}
+  id={id}
+  target={target}
+  rel={rel}
+  class:list={[
+    'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 gap-2 group',
+    sizeClasses[size],
+    variantClasses[variant],
+    extraClass,
+  ]}
+>
+  <slot />
+  {label}
+  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+  </svg>
+</a>

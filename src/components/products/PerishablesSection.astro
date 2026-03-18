@@ -1,0 +1,59 @@
+﻿---
+import { perishables } from '@/data/products';
+import ProductCard from './ProductCard.astro';
+---
+
+<section id="perecibles" class="py-20 bg-white scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-green/10 text-brand-green rounded-full text-sm font-semibold mb-4">
+        <span>🌿</span> Línea Perecederos
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Productos Perecibles de Exportación
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        15 productos agrícolas frescos de Ecuador, empacados y exportados con estándares internacionales de calidad. Marca comercial: <strong class="text-brand-green">Salomé</strong>.
+      </p>
+    </div>
+
+    <!-- Products grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
+      {perishables.map(product => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+
+    <!-- Packaging guide info -->
+    <div class="bg-brand-cream rounded-2xl p-7">
+      <h3 class="font-semibold text-brand-dark mb-4 flex items-center gap-2">
+        <span>📋</span> Guía de Datos Logísticos
+      </h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div class="text-center p-3 bg-white rounded-xl">
+          <div class="font-semibold text-brand-dark">Caja</div>
+          <div class="text-gray-400 text-xs">Peso por caja de exportación</div>
+        </div>
+        <div class="text-center p-3 bg-white rounded-xl">
+          <div class="font-semibold text-brand-dark">Cajas/Pallet</div>
+          <div class="text-gray-400 text-xs">Cajas que entran por cada pallet</div>
+        </div>
+        <div class="text-center p-3 bg-white rounded-xl">
+          <div class="font-semibold text-brand-dark">Cajas/Cont.</div>
+          <div class="text-gray-400 text-xs">Cajas totales por contenedor</div>
+        </div>
+        <div class="text-center p-3 bg-white rounded-xl">
+          <div class="font-semibold text-brand-dark">Pallets</div>
+          <div class="text-gray-400 text-xs">Pallets por contenedor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,94 @@
+﻿---
+const stats = [
+  {
+    icon: '🌍',
+    value: '10+',
+    label: 'Años de Experiencia',
+    description: 'Décadas de trayectoria en comercio internacional agrícola',
+    color: 'text-brand-green',
+    bg: 'bg-brand-green/5',
+    border: 'border-brand-green/20',
+  },
+  {
+    icon: '🚢',
+    value: '2+',
+    label: 'Mercados Destino',
+    description: 'Presencia consolidada en EE.UU. y Chile, con expansión continua',
+    color: 'text-brand-green',
+    bg: 'bg-brand-green/5',
+    border: 'border-brand-green/20',
+  },
+  {
+    icon: '👨‍🌾',
+    value: '100+',
+    label: 'Agricultores Asociados',
+    description: 'Red de productores certificados en Ecuador y Perú',
+    color: 'text-brand-green',
+    bg: 'bg-brand-green/5',
+    border: 'border-brand-green/20',
+  },
+];
+
+const highlights = [
+  { emoji: '🇪🇨', label: 'Ecuador' },
+  { emoji: '🇵🇪', label: 'Perú' },
+  { emoji: '🇺🇸', label: 'EE.UU.' },
+  { emoji: '🇨🇱', label: 'Chile' },
+];
+---
+
+<section class="py-20 bg-white" aria-label="Información clave de la empresa">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section intro -->
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Empresa Exportadora de <span class="text-brand-green">Confianza</span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Somos el puente estratégico entre los mejores agricultores de Sudamérica y los mercados internacionales más exigentes.
+      </p>
+    </div>
+
+    <!-- Stats grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {stats.map((item, i) => (
+        <div
+          class:list={[
+            'rounded-2xl p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl group',
+            item.bg,
+            item.border,
+          ]}
+        >
+          <div class="text-4xl mb-4">{item.icon}</div>
+          <div class:list={['font-display font-bold text-5xl mb-2', item.color]}>
+            {item.value}
+          </div>
+          <div class="font-semibold text-brand-dark text-lg mb-2">{item.label}</div>
+          <p class="text-gray-500 text-sm leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Countries / Markets strip -->
+    <div class="bg-brand-cream rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-semibold text-brand-dark">Presencia en mercados internacionales:</p>
+        <p class="text-gray-500 text-sm">Origen en Ecuador y Perú · Destino principal: EE.UU. y Chile</p>
+      </div>
+      <div class="flex items-center gap-6">
+        {highlights.map(h => (
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-2xl">{h.emoji}</span>
+            <span class="text-xs text-gray-500 font-medium">{h.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

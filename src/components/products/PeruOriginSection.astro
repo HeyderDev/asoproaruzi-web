@@ -1,0 +1,78 @@
+﻿---
+import { peruProducts } from '@/data/products';
+import CTAButton from '@/components/common/CTAButton.astro';
+---
+
+<section id="peru" class="py-20 bg-white scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-600/10 text-red-700 rounded-full text-sm font-semibold mb-4">
+        <span>🇵🇪</span> Extensión Perú — Agroproa
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Origen Perú · Agroproa
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        A través de nuestra marca <strong class="text-brand-dark">Agroproa</strong>, exportamos los mejores productos agrícolas del Perú hacia mercados internacionales premium.
+      </p>
+    </div>
+
+    <!-- Banner -->
+    <div class="bg-gradient-to-r from-red-700 to-red-900 rounded-3xl p-8 text-white mb-10 flex flex-col md:flex-row items-center gap-6">
+      <div class="text-6xl flex-shrink-0">🇵🇪</div>
+      <div>
+        <h3 class="font-display font-bold text-2xl mb-2">Agroproa — División Perú</h3>
+        <p class="text-white/80 leading-relaxed">
+          El Perú es uno de los grandes exportadores agrícolas de Latinoamérica. Agroproa es el brazo operativo de Asoproaruzi en el Perú, dedicado a seleccionar, certificar y exportar la mejor producción peruana hacia los mercados más exigentes.
+        </p>
+      </div>
+    </div>
+
+    <!-- Products grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-12">
+      {peruProducts.map(product => (
+        <div class="bg-brand-cream border border-gray-100 rounded-2xl p-5 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+          <div class="text-4xl mb-3">{product.emoji}</div>
+          <h3 class="font-semibold text-brand-dark text-sm mb-1 group-hover:text-red-700 transition-colors">{product.name}</h3>
+          {product.varieties && (
+            <div class="flex flex-wrap gap-1 justify-center mt-2">
+              {product.varieties.map(v => (
+                <span class="text-xs px-2 py-0.5 bg-red-50 text-red-600 rounded-full">{v}</span>
+              ))}
+            </div>
+          )}
+          {product.description && (
+            <p class="text-gray-400 text-xs mt-2 leading-tight">{product.description.substring(0, 60)}...</p>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Market targets -->
+    <div class="bg-brand-cream rounded-2xl p-7 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1">
+        <h3 class="font-semibold text-brand-dark mb-2">Mercados Destino</h3>
+        <p class="text-gray-500 text-sm">Los productos agrícolas peruanos de Agroproa se exportan principalmente hacia mercados europeos, norteamericanos y asiáticos, donde la palta Hass, los arándanos y los espárragos peruanos tienen alta demanda.</p>
+      </div>
+      <div class="flex gap-4 flex-shrink-0">
+        {['🇺🇸 EE.UU.', '🇪🇺 Europa', '🇨🇱 Chile', '🌏 Asia'].map(m => (
+          <div class="text-center">
+            <div class="text-2xl leading-none">{m.split(' ')[0]}</div>
+            <div class="text-xs text-gray-400 mt-1">{m.split(' ')[1]}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <CTAButton href="/contacto" label="Consultar por Origen Perú" variant="primary" />
+    </div>
+  </div>
+</section>

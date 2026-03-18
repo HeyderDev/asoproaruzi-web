@@ -1,0 +1,96 @@
+﻿
+> appasoproaruzi@0.0.1 build
+> astro build
+
+node.exe : 
+[31m[1m22:23:35[22m 
+[ERROR] [@astrojs/tailw
+ind][39m An unhandled 
+error occurred while 
+running the [1m"astro:
+config:setup"[22m hook
+En línea: 1 Carácter: 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([31m[1m22:2   
+ 3:...etup"[22m ho    
+ok:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+It looks like you're 
+trying to use 
+`tailwindcss` directly 
+as a PostCSS plugin. 
+The PostCSS plugin has 
+moved to a separate 
+package, so to 
+continue using 
+Tailwind CSS with 
+PostCSS you'll need to 
+install 
+`@tailwindcss/postcss` 
+and update your 
+PostCSS configuration.
+  [1mLocation:[22m
+    [4mC:\Users\heyde\
+OneDrive\Documentos\WEB
+\webAsoproaruzi\appAsop
+roaruzi\node_modules\ta
+ilwindcss\dist\chunk-L5
+IEUH3R.mjs:38:1643[24m
+  [1mStack trace:[22m
+[2m    at so (file:///
+C:/Users/heyde/OneDrive
+/Documentos/WEB/webAsop
+roaruzi/appAsoproaruzi/
+node_modules/tailwindcs
+s/dist/chunk-L5IEUH3R.m
+js:38:1643)
+    at async 
+astro:config:setup (fil
+e:///C:/Users/heyde/One
+Drive/Documentos/WEB/we
+bAsoproaruzi/appAsoproa
+ruzi/node_modules/@astr
+ojs/tailwind/dist/index
+.js:45:17)
+    at async 
+runHookInternal (file:/
+//C:/Users/heyde/OneDri
+ve/Documentos/WEB/webAs
+oproaruzi/appAsoproaruz
+i/node_modules/astro/di
+st/integrations/hooks.j
+s:52:5)
+    at async 
+AstroBuilder.setup (fil
+e:///C:/Users/heyde/One
+Drive/Documentos/WEB/we
+bAsoproaruzi/appAsoproa
+ruzi/node_modules/astro
+/dist/core/build/index.
+js:76:21)
+    at async build (fil
+e:///C:/Users/heyde/One
+Drive/Documentos/WEB/we
+bAsoproaruzi/appAsoproa
+ruzi/node_modules/astro
+/dist/core/build/index.
+js:48:3)[22m
+Assertion failed: 
+!(handle->flags & 
+UV_HANDLE_CLOSING), 
+file src\win\async.c, 
+line 76

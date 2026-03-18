@@ -1,0 +1,61 @@
+﻿---
+import { documents } from '@/data/company';
+---
+
+<section id="documentos" class="py-20 bg-white scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Documentos, Registros y Permisos
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Respaldo institucional y legal que garantiza a nuestros clientes la seriedad y cumplimiento normativo de Asoproaruzi.
+      </p>
+    </div>
+
+    <!-- Trust message -->
+    <div class="bg-brand-green/5 border border-brand-green/20 rounded-2xl p-6 mb-10 flex items-start gap-4">
+      <div class="text-3xl flex-shrink-0">🔒</div>
+      <div>
+        <p class="font-semibold text-brand-dark mb-1">Empresa legalmente constituida y habilitada para exportar</p>
+        <p class="text-gray-500 text-sm">Asoproaruzi cuenta con todos los registros, permisos y habilitaciones requeridos por las autoridades ecuatorianas y normas internacionales de exportación de productos alimenticios.</p>
+      </div>
+    </div>
+
+    <!-- Documents grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {documents.map(doc => (
+        <div class="bg-brand-cream border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:border-brand-green/30 transition-all duration-300 group">
+          <!-- Document icon -->
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-brand-green/10 rounded-xl flex items-center justify-center text-2xl group-hover:bg-brand-green/20 transition-colors">
+              📋
+            </div>
+            <span class="px-2.5 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
+              ✓ {doc.status.charAt(0).toUpperCase() + doc.status.slice(1)}
+            </span>
+          </div>
+          
+          <h3 class="font-display font-bold text-base text-brand-dark mb-2 group-hover:text-brand-green transition-colors">
+            {doc.title}
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-3">{doc.description}</p>
+          <span class="text-xs font-semibold text-brand-green uppercase tracking-wider">{doc.type}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Note -->
+    <div class="mt-10 text-center">
+      <p class="text-gray-400 text-sm max-w-xl mx-auto">
+        Para solicitar documentación específica o verificar nuestros registros, no dude en <a href="/contacto" class="text-brand-green hover:underline font-medium">contactarnos</a>.
+      </p>
+    </div>
+  </div>
+</section>

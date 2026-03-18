@@ -1,0 +1,61 @@
+﻿---
+interface Props {
+  title: string;
+  subtitle?: string;
+  bgImage?: string;
+  bgColor?: string;
+  breadcrumb?: string;
+  centered?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  bgImage,
+  bgColor = 'bg-brand-dark',
+  breadcrumb,
+  centered = true,
+} = Astro.props;
+---
+
+<section class:list={['relative pt-36 pb-20 overflow-hidden', bgColor, bgImage ? '' : '']} style={bgImage ? `background-image: url('${bgImage}'); background-size: cover; background-position: center;` : ''}>
+  
+  {bgImage && <div class="absolute inset-0 bg-brand-dark/75"></div>}
+  
+  <!-- Decorative shapes -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-green/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-green/20 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+  </div>
+
+  <div class:list={['relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8', centered ? 'text-center' : '']}>
+    
+    {breadcrumb && (
+      <nav aria-label="Ruta de navegación" class="mb-4">
+        <ol class="flex items-center gap-2 justify-center">
+          <li><a href="/" class="text-white/50 hover:text-brand-green text-sm transition-colors">Inicio</a></li>
+          <li class="text-white/30 text-sm">/</li>
+          <li class="text-brand-green text-sm font-medium">{breadcrumb}</li>
+        </ol>
+      </nav>
+    )}
+    
+    <div class="flex items-center gap-3 mb-4 justify-center">
+      <div class="h-px w-8 bg-brand-green"></div>
+      <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+      <div class="h-px w-8 bg-brand-green"></div>
+    </div>
+
+    <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight">
+      {title}
+    </h1>
+
+    {subtitle && (
+      <p class="text-white/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        {subtitle}
+      </p>
+    )}
+    
+    <slot />
+  </div>
+</section>

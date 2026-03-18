@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroSlider from '@/components/home/HeroSlider.astro';
+import ImportantInfoGrid from '@/components/home/ImportantInfoGrid.astro';
+import CompanyPreview from '@/components/home/CompanyPreview.astro';
+import ProductsPreview from '@/components/home/ProductsPreview.astro';
+import FarmerCommitment from '@/components/home/FarmerCommitment.astro';
+import IntroContactCTA from '@/components/home/IntroContactCTA.astro';
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+---
+
+<BaseLayout
+  title="Inicio"
+  description="Asoproaruzi – Empresa exportadora ecuatoriana de productos agrícolas perecederos y snacks. Conectamos Ecuador y Perú con los mercados de EE.UU. y Chile."
+>
+  <HeroSlider />
+  <ImportantInfoGrid />
+  <CompanyPreview />
+  <ProductsPreview />
+  <FarmerCommitment />
+  <IntroContactCTA />
+  <WhatsAppButton phone="+593XXXXXXXXX" message="Hola, estoy interesado en sus productos. ¿Me pueden dar más información?" floatingButton={true} />
+</BaseLayout>

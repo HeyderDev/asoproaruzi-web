@@ -1,0 +1,69 @@
+﻿---
+import { aboutUs } from '@/data/company';
+---
+
+<section id="nosotros" class="py-20 bg-brand-cream scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        {aboutUs.title}
+      </h2>
+      <p class="text-brand-green font-semibold mb-4">{aboutUs.subtitle}</p>
+      <p class="text-gray-500 text-lg max-w-3xl mx-auto leading-relaxed">
+        {aboutUs.description.split('\n\n')[0]}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Pillars grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {aboutUs.pillars.map(pillar => (
+          <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+            <div class="w-12 h-12 bg-brand-green/10 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-brand-green/20 transition-colors">
+              {pillar.icon}
+            </div>
+            <h3 class="font-semibold text-brand-dark text-sm mb-2 group-hover:text-brand-green transition-colors">{pillar.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{pillar.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Content + visual -->
+      <div>
+        <div class="prose prose-gray max-w-none mb-8">
+          {aboutUs.description.split('\n\n').slice(1).map(para => (
+            <p class="text-gray-600 leading-relaxed mb-4">{para}</p>
+          ))}
+        </div>
+        
+        <!-- Presence map visual -->
+        <div class="bg-brand-dark rounded-2xl p-7 text-white">
+          <p class="text-xs uppercase tracking-widest text-white/50 mb-4">Presencia Internacional</p>
+          <div class="grid grid-cols-2 gap-3">
+            {[
+              { flag: '🇪🇨', name: 'Ecuador', role: 'Sede Principal / Origen' },
+              { flag: '🇺🇸', name: 'EE.UU.', role: 'Mercado Principal (ACMA LLC)' },
+              { flag: '🇵🇪', name: 'Perú', role: 'Origen / Agroproa' },
+              { flag: '🇨🇱', name: 'Chile', role: 'Mercado destino' },
+            ].map(office => (
+              <div class="bg-white/10 rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xl">{office.flag}</span>
+                  <span class="font-semibold text-sm">{office.name}</span>
+                </div>
+                <p class="text-white/50 text-xs">{office.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

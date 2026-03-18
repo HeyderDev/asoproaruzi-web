@@ -1,0 +1,42 @@
+﻿---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/common/PageHero.astro';
+import PerishablesSection from '@/components/products/PerishablesSection.astro';
+import ChipsSection from '@/components/products/ChipsSection.astro';
+import PeruOriginSection from '@/components/products/PeruOriginSection.astro';
+import ProductBenefitsGrid from '@/components/products/ProductBenefitsGrid.astro';
+import IntroContactCTA from '@/components/home/IntroContactCTA.astro';
+import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
+---
+
+<BaseLayout
+  title="Productos"
+  description="Portafolio completo de Asoproaruzi: productos perecibles (plátano, banana, piña, aguacate y más), chips y snacks (plátano, yuca, malanga, camote) y extensión Perú/Agroproa."
+>
+  <PageHero
+    title="Nuestros Productos"
+    subtitle="Perecederos frescos, snacks de calidad y producción peruana. Todo respaldado por estándares internacionales de exportación."
+    breadcrumb="Productos"
+    bgColor="bg-brand-dark"
+  >
+    <!-- Category tabs -->
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="#perecibles" class="px-5 py-2.5 bg-brand-green text-white font-semibold text-sm rounded-xl hover:bg-brand-green-light transition-all">
+        🌿 Perecibles
+      </a>
+      <a href="#chips" class="px-5 py-2.5 bg-brand-green text-white font-semibold text-sm rounded-xl hover:bg-brand-green-light transition-all">
+        🍿 Chips & Snacks
+      </a>
+      <a href="#peru" class="px-5 py-2.5 bg-red-700 text-white font-semibold text-sm rounded-xl hover:bg-red-600 transition-all">
+        🇵🇪 Origen Perú
+      </a>
+    </div>
+  </PageHero>
+
+  <PerishablesSection />
+  <ChipsSection />
+  <PeruOriginSection />
+  <ProductBenefitsGrid />
+  <IntroContactCTA />
+  <WhatsAppButton phone="+593XXXXXXXXX" message="Hola, me interesa importar sus productos. ¿Me pueden ayudar?" floatingButton={true} />
+</BaseLayout>

@@ -1,0 +1,84 @@
+﻿---
+import { farmerCommitment } from '@/data/company';
+import CTAButton from '@/components/common/CTAButton.astro';
+---
+
+<section class="py-20 bg-brand-dark relative overflow-hidden" aria-label="Compromiso con el campesino">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5" aria-hidden="true" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.6\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+  
+  <!-- Decorative orb -->
+  <div class="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-brand-green/20 rounded-full blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -left-32 bottom-0 w-64 h-64 bg-brand-green/10 rounded-full blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Visual feature block -->
+      <div class="relative">
+        <!-- Main card -->
+        <div class="bg-brand-green rounded-3xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          <div class="text-6xl mb-6">👨‍🌾</div>
+          <h3 class="font-display font-bold text-2xl text-white mb-4">El Agricultor es el Corazón</h3>
+          <p class="text-white/70 text-sm leading-relaxed mb-6">
+            Trabajamos con productores certificados de Ecuador y Perú, estableciendo alianzas de largo plazo basadas en confianza y respeto mutuo.
+          </p>
+          <!-- Commitments preview -->
+          <div class="space-y-3">
+            {farmerCommitment.commitments.slice(0, 3).map(c => (
+              <div class="flex items-center gap-3">
+                <div class="w-5 h-5 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg width="10" height="10" viewBox="0 0 20 20" fill="white">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <span class="text-white/80 text-sm">{c}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Floating stat card -->
+        <div class="absolute -bottom-4 -right-4 bg-brand-green rounded-2xl p-5 shadow-2xl">
+          <div class="font-display font-bold text-3xl text-white">100+</div>
+          <div class="text-white/80 text-xs font-medium">Agricultores<br/>Asociados</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px w-8 bg-brand-green"></div>
+          <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+          <div class="h-px w-8 bg-brand-green"></div>
+        </div>
+        
+        <h2 class="font-display font-bold text-4xl text-white mb-4 leading-tight">
+          {farmerCommitment.title}
+        </h2>
+        <p class="text-brand-green font-medium mb-6">{farmerCommitment.subtitle}</p>
+        
+        <p class="text-white/70 leading-relaxed mb-8">
+          {farmerCommitment.description.substring(0, 350)}...
+        </p>
+
+        <!-- All commitments list -->
+        <div class="space-y-3 mb-10">
+          {farmerCommitment.commitments.map(c => (
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-brand-green/20 border border-brand-green/40 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor" class="text-brand-green">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="text-white/80 text-sm">{c}</span>
+            </div>
+          ))}
+        </div>
+
+        <CTAButton href="/empresa" label="Nuestra Filosofía y Valores" variant="gold" size="lg" />
+      </div>
+    </div>
+  </div>
+</section>

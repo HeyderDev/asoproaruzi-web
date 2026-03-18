@@ -1,0 +1,73 @@
+﻿---
+import CTAButton from '@/components/common/CTAButton.astro';
+import { vision, mission, history } from '@/data/company';
+
+const cards = [
+  {
+    icon: '🎯',
+    label: 'Visión',
+    title: 'Líderes Globales en Exportación',
+    excerpt: vision.content.substring(0, 160) + '...',
+    color: 'border-brand-green',
+    iconBg: 'bg-brand-green/10',
+    iconColor: 'text-brand-green',
+  },
+  {
+    icon: '🌉',
+    label: 'Misión',
+    title: 'Construimos Puentes entre Culturas',
+    excerpt: mission.content.substring(0, 160) + '...',
+    color: 'border-brand-green',
+    iconBg: 'bg-brand-green/10',
+    iconColor: 'text-brand-green',
+  },
+  {
+    icon: '🏛️',
+    label: 'Historia',
+    title: 'Empresa Exportadora Ecuatoriana',
+    excerpt: history.content.substring(0, 160) + '...',
+    color: 'border-brand-earth',
+    iconBg: 'bg-brand-earth/10',
+    iconColor: 'text-brand-earth',
+  },
+];
+---
+
+<section class="py-20 bg-brand-cream" aria-label="Resumen de la empresa">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Title -->
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        Nuestra <span style="color: var(--color-gold)">Empresa</span>
+      </h2>
+      <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+        Conoce quiénes somos, qué nos mueve y la historia detrás de Asoproaruzi.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {cards.map(card => (
+        <div class:list={['bg-white rounded-2xl p-8 border-t-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group', card.color]}>
+          <div class:list={['w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5', card.iconBg]}>
+            {card.icon}
+          </div>
+          <div class:list={['text-xs font-semibold uppercase tracking-widest mb-2', card.iconColor]}>{card.label}</div>
+          <h3 class="font-display font-bold text-xl text-brand-dark mb-3">{card.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{card.excerpt}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <CTAButton href="/empresa" label="Conocer Nuestra Empresa" variant="primary" size="lg" />
+    </div>
+  </div>
+</section>

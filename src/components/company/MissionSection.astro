@@ -1,0 +1,62 @@
+﻿---
+import { mission } from '@/data/company';
+---
+
+<section id="mision" class="py-20 bg-brand-cream scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Content (left) -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-px w-8 bg-brand-green"></div>
+          <span class="text-brand-green font-semibold text-sm uppercase tracking-widest">Misión</span>
+        </div>
+        <h2 class="font-display font-bold text-4xl text-brand-dark mb-6 leading-tight">
+          Construimos Puentes entre Culturas y Mercados
+        </h2>
+        <p class="text-gray-600 leading-relaxed text-lg mb-8">
+          {mission.content}
+        </p>
+
+        <!-- Key concepts from mission -->
+        <div class="space-y-4">
+          {[
+            { icon: '🌉', title: 'Puente Cultural', desc: 'Conectamos los sabores de la tierra con el mundo.' },
+            { icon: '🌱', title: 'Relaciones Sostenibles', desc: 'Cultivamos alianzas de largo plazo con agricultores.' },
+            { icon: '🤝', title: 'Relaciones Duraderas', desc: 'Ayudamos a nuestros clientes a crecer juntos.' },
+          ].map(item => (
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
+              <div class="text-2xl flex-shrink-0">{item.icon}</div>
+              <div>
+                <div class="font-semibold text-brand-dark text-sm">{item.title}</div>
+                <div class="text-gray-500 text-sm">{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Visual (right) -->
+      <div class="relative">
+        <div class="bg-gradient-to-br from-brand-green to-brand-earth rounded-3xl p-10 text-white relative overflow-hidden">
+          <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+          <div class="text-6xl mb-6">🌉</div>
+          <blockquote class="font-display italic text-xl text-white/90 leading-relaxed">
+            "Construir puentes entre culturas, llevando los sabores auténticos de la tierra a distintos rincones del mundo."
+          </blockquote>
+          <div class="mt-8 grid grid-cols-2 gap-4">
+            <div class="bg-white/20 rounded-xl p-4 text-center">
+              <div class="font-bold text-2xl">🇪🇨 🇵🇪</div>
+              <div class="text-white/80 text-xs mt-1">Origen</div>
+            </div>
+            <div class="bg-white/20 rounded-xl p-4 text-center">
+              <div class="font-bold text-2xl">🇺🇸 🇨🇱</div>
+              <div class="text-white/80 text-xs mt-1">Destino</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+﻿---
+import { farmerCommitment } from '@/data/company';
+import CTAButton from '@/components/common/CTAButton.astro';
+---
+
+<section id="compromiso-campesino" class="py-20 bg-white scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-14">
+      <div class="flex items-center gap-3 justify-center mb-4">
+        <div class="h-px w-8 bg-brand-green"></div>
+        <div class="h-1.5 w-1.5 rounded-full bg-brand-green"></div>
+        <div class="h-px w-8 bg-brand-green"></div>
+      </div>
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-brand-dark mb-3">
+        {farmerCommitment.title}
+      </h2>
+      <p class="text-brand-green font-semibold">{farmerCommitment.subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Content -->
+      <div>
+        <div class="prose prose-gray max-w-none mb-8">
+          {farmerCommitment.description.split('\n\n').map(para => (
+            <p class="text-gray-600 leading-relaxed mb-4">{para}</p>
+          ))}
+        </div>
+
+        <h3 class="font-semibold text-brand-dark mb-5">Nuestro Compromiso Concreto</h3>
+        <ul class="space-y-3 mb-8">
+          {farmerCommitment.commitments.map(c => (
+            <li class="flex items-center gap-3 p-3 bg-brand-green/5 rounded-xl border border-brand-green/10">
+              <div class="w-7 h-7 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0">
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="white">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="text-gray-700 text-sm font-medium">{c}</span>
+            </li>
+          ))}
+        </ul>
+
+        <CTAButton href="/contacto" label="Ser Nuestro Agricultor Asociado" variant="primary" />
+      </div>
+
+      <!-- Visual collage -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-gradient-to-br from-brand-green to-brand-green-dark rounded-3xl p-8 flex flex-col items-center justify-center text-white text-center aspect-square">
+          <div class="text-6xl mb-4">🌱</div>
+          <div class="font-display font-bold text-xl">Origen</div>
+          <div class="text-white/70 text-sm mt-1">Ecuador & Perú</div>
+        </div>
+        <div class="grid grid-rows-2 gap-4">
+          <div class="bg-brand-green rounded-2xl p-6 flex items-center justify-center text-center">
+            <div>
+              <div class="text-3xl mb-1">100+</div>
+              <div class="text-white/80 text-xs font-medium">Agricultores<br/>Asociados</div>
+            </div>
+          </div>
+          <div class="bg-brand-cream rounded-2xl p-6 flex items-center justify-center text-center border border-gray-200">
+            <div>
+              <div class="text-3xl mb-1">✅</div>
+              <div class="text-gray-600 text-xs font-medium">Buenas<br/>Prácticas</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-2 bg-brand-dark rounded-2xl p-6 text-white">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">👨‍🌾</span>
+            <div class="font-semibold">El agricultor primero</div>
+          </div>
+          <p class="text-white/60 text-sm">Relaciones de largo plazo con los productores que alimentan al mundo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

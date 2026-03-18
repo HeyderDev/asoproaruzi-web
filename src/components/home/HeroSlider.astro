@@ -1,0 +1,211 @@
+---
+// No Astro props needed - slide data is inline
+const slides = [
+  {
+    id: 1,
+    headline: 'Llevamos lo Mejor de la Tierra al Mundo',
+    subtext: 'Exportación de frutas tropicales y productos agrícolas de Ecuador y Perú hacia los mercados más exigentes del mundo.',
+    cta: { label: 'Conocer Productos', href: '/productos' },
+    ctaSecondary: { label: 'Nuestra Empresa', href: '/empresa' },
+    image: '/HeroSlider/hero1.png',
+  },
+  {
+    id: 2,
+    headline: 'Calidad de Exportación Directa del Campo',
+    subtext: 'Trazabilidad completa, cadena de frío y estándares internacionales que garantizan la frescura y calidad de cada envío.',
+    cta: { label: 'Ver Perecibles', href: '/productos#perecibles' },
+    ctaSecondary: { label: 'Sea Nuestro Cliente', href: '/contacto' },
+    image: '/HeroSlider/hero2.png',
+  },
+  {
+    id: 3,
+    headline: 'Plátano, Banana, Piña y Más desde Ecuador',
+    subtext: 'Productos agrícolas perecederos de primera calidad, empacados y exportados con los más altos estándares fitosanitarios internacionales.',
+    cta: { label: 'Ver Productos', href: '/productos' },
+    ctaSecondary: null,
+    image: '/HeroSlider/hero3.png',
+  },
+  {
+    id: 4,
+    headline: 'Marcas Propias: Salomé · ACMA · Agroproa',
+    subtext: 'Tres marcas, un compromiso: llevar la riqueza agrícola de Sudamérica a los consumidores del mundo con calidad, confianza y sostenibilidad.',
+    cta: { label: 'Nuestra Empresa', href: '/empresa' },
+    ctaSecondary: { label: 'Contacto', href: '/contacto' },
+    image: '/HeroSlider/hero4.png',
+  },
+  {
+    id: 5,
+    headline: 'Compromiso con el Agricultor Latinoamericano',
+    subtext: 'Trabajamos directamente con productores de Ecuador y Perú, asegurando precios justos, buenas prácticas y desarrollo sostenible.',
+    cta: { label: 'Conocernos', href: '/empresa' },
+    ctaSecondary: { label: 'Contáctenos', href: '/contacto' },
+    image: '/HeroSlider/hero5.png',
+  },
+];
+---
+
+<section id="hero-slider" class="relative h-screen min-h-[600px] max-h-[800px] overflow-hidden" aria-label="Presentación corporativa">
+  
+  <!-- Slides -->
+  <div id="slides-container" class="relative w-full h-full">
+    {slides.map((slide, i) => (
+      <div
+        id={`slide-${i}`}
+        class:list={[
+          'slide absolute inset-0 flex items-center bg-cover bg-center bg-no-repeat transition-opacity duration-1000',
+          i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0',
+        ]}
+        style={`background-image: url('${slide.image}');`}
+        role="tabpanel"
+        aria-label={`Slide ${i + 1}: ${slide.headline}`}
+      >
+        <!-- Overlay para hacer el texto legible -->
+        <div class="absolute inset-0 bg-brand-dark/60"></div>
+        
+        <!-- Decorative large emoji / orb -->
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 text-white/10 text-[300px] font-bold select-none pointer-events-none leading-none hidden lg:block" aria-hidden="true">
+          {slide.emoji}
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div class="max-w-3xl">
+            <!-- Tag line -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="h-px w-12 bg-white"></div>
+              <span class="text-white text-sm font-semibold uppercase tracking-widest">Asoproaruzi · Exportación Agrícola</span>
+            </div>
+            
+            <!-- Headline -->
+            <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+              {slide.headline}
+            </h1>
+            
+            <!-- Subtext -->
+            <p class="text-white/80 text-lg md:text-xl mb-10 leading-relaxed max-w-2xl">
+              {slide.subtext}
+            </p>
+            
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href={slide.cta.href}
+                class="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-green text-white font-semibold rounded-xl hover:bg-white hover:text-brand-green transition-all group"
+              >
+                {slide.cta.label}
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </a>
+              {slide.ctaSecondary && (
+                <a
+                  href={slide.ctaSecondary.href}
+                  class="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-white/40 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white transition-all"
+                >
+                  {slide.ctaSecondary.label}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Controls: Dots -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3" role="tablist" aria-label="Controles de slider">
+    {slides.map((_, i) => (
+      <button
+        id={`dot-${i}`}
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        aria-label={`Ir al slide ${i + 1}`}
+        class:list={[
+          'dot rounded-full transition-all duration-300',
+          i === 0 ? 'w-8 h-2.5 bg-white' : 'w-2.5 h-2.5 bg-white/50 hover:bg-white/80',
+        ]}
+        data-index={i}
+      />
+    ))}
+  </div>
+
+  <!-- Controls: Arrows -->
+  <button
+    id="prev-slide"
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 transition-all hover:scale-110"
+    aria-label="Slide anterior"
+  >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+  <button
+    id="next-slide"
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white border border-white/20 transition-all hover:scale-110"
+    aria-label="Siguiente slide"
+  >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+    </svg>
+  </button>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 right-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/40">
+    <span class="text-xs uppercase tracking-widest rotate-90">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-white/40 to-transparent relative overflow-hidden">
+      <div class="scroll-line absolute top-0 left-0 w-full h-full bg-white animate-bounce"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const TOTAL = 5;
+  const INTERVAL = 5000;
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(n: number) {
+    const prevSlide = document.getElementById(`slide-${current}`);
+    const prevDot = document.getElementById(`dot-${current}`);
+    current = (n + TOTAL) % TOTAL;
+    const nextSlide = document.getElementById(`slide-${current}`);
+    const nextDot = document.getElementById(`dot-${current}`);
+
+    prevSlide?.classList.replace('opacity-100', 'opacity-0');
+    prevSlide?.classList.replace('z-10', 'z-0');
+    nextSlide?.classList.replace('opacity-0', 'opacity-100');
+    nextSlide?.classList.replace('z-0', 'z-10');
+
+    if (prevDot) {
+      prevDot.classList.replace('w-8', 'w-2.5');
+      prevDot.classList.replace('bg-white', 'bg-white/50');
+      prevDot.setAttribute('aria-selected', 'false');
+    }
+    if (nextDot) {
+      nextDot.classList.replace('w-2.5', 'w-8');
+      nextDot.classList.replace('bg-white/50', 'bg-white');
+      nextDot.setAttribute('aria-selected', 'true');
+    }
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  document.getElementById('next-slide')?.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+  document.getElementById('prev-slide')?.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+
+  document.querySelectorAll('.dot').forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt((dot as HTMLElement).dataset.index ?? '0');
+      goTo(idx);
+      resetTimer();
+    });
+  });
+
+  timer = setInterval(() => goTo(current + 1), INTERVAL);
+
+  // Pause on hover
+  document.getElementById('hero-slider')?.addEventListener('mouseenter', () => clearInterval(timer));
+  document.getElementById('hero-slider')?.addEventListener('mouseleave', resetTimer);
+</script>
