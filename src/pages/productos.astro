@@ -1,9 +1,8 @@
-﻿---
+---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/common/PageHero.astro';
 import PerishablesSection from '@/components/products/PerishablesSection.astro';
 import ChipsSection from '@/components/products/ChipsSection.astro';
-import PeruOriginSection from '@/components/products/PeruOriginSection.astro';
 import ProductBenefitsGrid from '@/components/products/ProductBenefitsGrid.astro';
 import IntroContactCTA from '@/components/home/IntroContactCTA.astro';
 import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
@@ -27,16 +26,64 @@ import WhatsAppButton from '@/components/common/WhatsAppButton.astro';
       <a href="#chips" class="px-5 py-2.5 bg-brand-green text-white font-semibold text-sm rounded-xl hover:bg-brand-green-light transition-all">
         🍿 Chips & Snacks
       </a>
-      <a href="#peru" class="px-5 py-2.5 bg-red-700 text-white font-semibold text-sm rounded-xl hover:bg-red-600 transition-all">
-        🇵🇪 Origen Perú
-      </a>
     </div>
   </PageHero>
 
-  <PerishablesSection />
-  <ChipsSection />
-  <PeruOriginSection />
+  <div id="products-container">
+    <div data-category="perecibles">
+      <PerishablesSection />
+    </div>
+    <div data-category="snacks">
+      <ChipsSection />
+    </div>
+  </div>
   <ProductBenefitsGrid />
   <IntroContactCTA />
   <WhatsAppButton phone="+593XXXXXXXXX" message="Hola, me interesa importar sus productos. ¿Me pueden ayudar?" floatingButton={true} />
+
+  <script>
+    function filterProducts() {
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get('category');
+      
+      const container = document.getElementById('products-container');
+      if (!container) return;
+      
+      const sections = container.querySelectorAll('[data-category]');
+      
+      if (!category) {
+        // Show all if no category is selected
+        sections.forEach(sec => (sec as HTMLElement).style.display = 'block');
+        return;
+      }
+      
+      sections.forEach(sec => {
+        if (sec.getAttribute('data-category') === category) {
+          (sec as HTMLElement).style.display = 'block';
+        } else {
+          (sec as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    // Run on load and on URL changes
+    filterProducts();
+    
+    // Listen for Astro page transitions if applicable or hash changes
+    window.addEventListener('popstate', filterProducts);
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1); // 'perecibles', 'chips', 'peru'
+      const map: Record<string, string> = {
+        'perecibles': 'perecibles',
+        'chips': 'snacks',
+        'peru': 'peru'
+      };
+      if (map[hash]) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('category', map[hash]);
+        window.history.pushState({}, '', url);
+        filterProducts();
+      }
+    });
+  </script>
 </BaseLayout>
