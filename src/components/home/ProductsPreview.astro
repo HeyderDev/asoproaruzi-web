@@ -1,39 +1,22 @@
 ---
-import CTAButton from '@/components/common/CTAButton.astro';
-
 const sections = [
   {
-    icon: '🏢',
     label: 'Acerca de Nosotros',
     description: 'Conoce la historia, visión, misión y estructura corporativa de Asoproaruzi, conectando Ecuador y Perú con el mundo.',
-    items: ['Visión', 'Misión', 'Historia', 'Valores'],
     href: '/empresa',
-    color: 'border-brand-green',
-    badgeBg: 'bg-brand-green',
-    tag: 'Nuestra Empresa',
-    cta: 'Conocer más'
+    bgImage: '/home/NUESTRA EMPRESA.jpeg'
   },
   {
-    icon: '🍌',
     label: 'Productos',
     description: 'Portafolio completo: productos perecibles frescos, línea selecta de snacks y extensión Origen Perú.',
-    items: ['Perecibles', 'Chips & Snacks', 'Origen Perú'],
     href: '/productos',
-    color: 'border-brand-green',
-    badgeBg: 'bg-brand-green',
-    tag: 'Catálogo',
-    cta: 'Ver productos'
+    bgImage: '/home/PRODUCTOS.jpeg'
   },
   {
-    icon: '🤝',
     label: 'Compromiso con el Campesino',
     description: 'Trabajamos directamente con los agricultores, garantizando comercio justo, desarrollo sostenible y calidad.',
-    items: ['Comercio Justo', 'Sostenibilidad', 'Apoyo Directo'],
     href: '/empresa#compromiso-campesino',
-    color: 'border-brand-green',
-    badgeBg: 'bg-brand-green',
-    tag: 'Responsabilidad',
-    cta: 'Leer más'
+    bgImage: '/home/COMPROMISO CON EL CAMPESINO.jpeg'
   },
 ];
 ---
@@ -61,40 +44,23 @@ const sections = [
       {sections.map(sec => (
         <a
           href={sec.href}
-          class:list={[
-            'block bg-brand-cream rounded-2xl p-8 border-t-4 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group',
-            sec.color,
-          ]}
+          class="relative block rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group h-80 sm:h-96"
         >
-          <!-- Header -->
-          <div class="flex items-start justify-between mb-6">
-            <div class="text-4xl">{sec.icon}</div>
-            <span class:list={['text-xs font-semibold text-white px-2.5 py-1 rounded-full', sec.badgeBg]}>
-              {sec.tag}
-            </span>
-          </div>
+          <!-- Background Image with Overlay -->
+          <div 
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style={`background-image: url('${sec.bgImage}');`}
+          ></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 group-hover:from-black/90 group-hover:via-black/50 transition-colors duration-300"></div>
 
           <!-- Content -->
-          <h3 class="font-display font-bold text-xl text-brand-dark mb-3 group-hover:text-brand-green transition-colors">
-            {sec.label}
-          </h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-5">{sec.description}</p>
-
-          <!-- Sample items -->
-          <div class="flex flex-wrap gap-2 mb-6">
-            {sec.items.map(item => (
-              <span class="px-2.5 py-1 bg-white text-brand-dark text-xs font-medium rounded-lg border border-gray-100">
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <!-- Link -->
-          <div class="flex items-center gap-2 text-brand-green font-semibold text-sm group-hover:gap-3 transition-all">
-            {sec.cta}
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-            </svg>
+          <div class="relative h-full flex flex-col justify-end p-8">
+            <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-brand-green transition-colors">
+              {sec.label}
+            </h3>
+            <p class="text-white/90 text-sm leading-relaxed">
+              {sec.description}
+            </p>
           </div>
         </a>
       ))}

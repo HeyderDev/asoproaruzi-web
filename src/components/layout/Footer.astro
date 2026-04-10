@@ -3,22 +3,22 @@ import { navLinks } from '@/data/navigation';
 import { socialLinks } from '@/data/contact';
 ---
 
-<footer class="bg-brand-dark text-white border-t border-white/10 relative">
-  <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row">
+<footer class="bg-brand-green-50 text-brand-dark border-t border-brand-green-100 relative">
+  <div class="max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center">
     
     <!-- Lado Izquierdo: Contactos (Aprox 35% a 40% width) -->
-    <div class="w-full lg:w-[40%] px-6 py-12 md:px-12 flex flex-col justify-center">
-      <h2 class="text-4xl md:text-[3.5rem] font-black text-white uppercase tracking-tighter mb-10 leading-none">
+    <div class="w-full lg:w-[50%] px-6 py-12 md:px-12 flex flex-col justify-center">
+      <h2 class="text-4xl md:text-[3.5rem] font-black text-brand-dark uppercase tracking-tighter mb-10 leading-none">
         CONTACTENOS
       </h2>
 
       <!-- Ecuador Block -->
-      <div class="mb-10 text-white/90">
-        <h3 class="text-lg font-semibold text-brand-green mb-4 uppercase tracking-wider">Ecuador</h3>
+      <div class="mb-10 text-gray-700">
+        <h3 class="text-lg font-semibold text-brand-green-700 mb-4 uppercase tracking-wider">Ecuador</h3>
         <ul class="space-y-3 font-medium">
-          <li>Teléfonos: +(593) 098 2937 360</li>
-          <li>E-mail: <a href="mailto:info@asoproaruzi.com" class="hover:text-brand-green transition-colors underline decoration-white/30 underline-offset-4">info@asoproaruzi.com</a></li>
-          <li class="leading-relaxed pr-4 text-white/70">Dirección: Av la Esperanza y 3 de Julio SN. El Carmen. Manabí. Ecuador.</li>
+          <li>Teléfonos: <span class="text-brand-dark">+(593) 098 2937 360</span></li>
+          <li>E-mail: <a href="mailto:info@asoproaruzi.com" class="hover:text-brand-green transition-colors underline decoration-brand-green/30 underline-offset-4 font-bold">info@asoproaruzi.com</a></li>
+          <li class="leading-relaxed pr-4 text-gray-600">Dirección: Av la Esperanza y 3 de Julio SN. El Carmen. Manabí. Ecuador.</li>
         </ul>
         <a 
           href="https://wa.me/5930982937360" 
@@ -30,12 +30,12 @@ import { socialLinks } from '@/data/contact';
       </div>
 
       <!-- Peru Block -->
-      <div class="text-white/90">
-        <h3 class="text-lg font-semibold text-brand-green mb-4 uppercase tracking-wider">Peru</h3>
+      <div class="text-gray-700">
+        <h3 class="text-lg font-semibold text-brand-green-700 mb-4 uppercase tracking-wider">Peru</h3>
         <ul class="space-y-3 font-medium">
-          <li>Teléfonos: +(593) 098 2937 360</li>
-          <li>E-mail: <a href="mailto:info@asoproaruzi.com" class="hover:text-brand-green transition-colors underline decoration-white/30 underline-offset-4">info@asoproaruzi.com</a></li>
-          <li class="leading-relaxed pr-4 text-white/70">Dirección: Av la Esperanza y 3 de Julio SN. El Carmen. Manabí. Ecuador.</li>
+          <li>Teléfonos: <span class="text-brand-dark">+(593) 098 2937 360</span></li>
+          <li>E-mail: <a href="mailto:info@asoproaruzi.com" class="hover:text-brand-green transition-colors underline decoration-brand-green/30 underline-offset-4 font-bold">info@asoproaruzi.com</a></li>
+          <li class="leading-relaxed pr-4 text-gray-600">Dirección: Av la Esperanza y 3 de Julio SN. El Carmen. Manabí. Ecuador.</li>
         </ul>
         <a 
           href="https://wa.me/5930982937360" 
@@ -48,21 +48,23 @@ import { socialLinks } from '@/data/contact';
     </div>
 
     <!-- Lado Derecho: Mapa (Aprox 60% a 65% width) -->
-    <div class="w-full lg:w-[60%] min-h-[500px] lg:min-h-[700px] bg-brand-dark/50 relative border-l border-white/5">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7042817282865!2d-79.46740692419142!3d-0.2709299997233819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b4bbfa35d0f6b%3A0xe549cedee9a5da98!2sEl%20Carmen%2C%20Ecuador!5e0!3m2!1sen!2sus!4v1700685655412!5m2!1sen!2sus" 
-        class="absolute inset-0 w-full h-full border-0 opacity-90 mix-blend-luminosity hover:mix-blend-normal hover:opacity-100 transition-all duration-500" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+    <div class="w-full lg:w-[50%] p-6 lg:p-12 flex justify-center items-center">
+      <div class="w-full max-w-[600px] aspect-square lg:aspect-video bg-white rounded-2xl shadow-xl overflow-hidden relative border border-brand-green-100">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7042817282865!2d-79.46740692419142!3d-0.2709299997233819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b4bbfa35d0f6b%3A0xe549cedee9a5da98!2sEl%20Carmen%2C%20Ecuador!5e0!3m2!1sen!2sus!4v1700685655412!5m2!1sen!2sus" 
+          class="w-full h-full border-0 transition-all duration-500" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
   </div>
 
   <!-- Bottom bar -->
-  <div class="bg-black/20 border-t border-white/5">
+  <div class="bg-brand-green/10 border-t border-brand-green-100">
     <div class="max-w-[1600px] mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
-      <p class="text-white/40 text-sm font-medium">
+      <p class="text-brand-dark/50 text-sm font-medium">
         © {new Date().getFullYear()} Asoproaruzi. Todos los derechos reservados.
       </p>
     </div>
